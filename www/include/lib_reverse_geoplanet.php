@@ -7,6 +7,9 @@
 
 	function reverse_geoplanet($lat, $lon){
 
+		# TODO: check for a config flag that indicates we want to call a
+		# remote instance of reverse-geoplanet and then do that.
+
 		$short_lat = (float)sprintf("%.3f", $lat);
 		$short_lon = (float)sprintf("%.3f", $lon);
 
