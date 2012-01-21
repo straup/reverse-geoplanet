@@ -33,7 +33,7 @@ How to
 	}
 
 By default reverse-geoplanet outputs JSON and is expected to be run more as a
-service for other robots rathern than a website for humans. You can force
+service for other robots rather than a website for humans. You can force
 results to be returned as HTML by specifying the *inline=1* argument. For example:
 
 	http://example.com/reverse-geoplanet/www/?lat=37.765219&lon=-122.419787&inline=1
