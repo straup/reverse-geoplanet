@@ -25,6 +25,10 @@
 
 	$rsp = reverse_geoplanet($lat, $lon);
 
-	api_output_ok($rsp, $more);
+	if (! $rsp['ok']){
+		api_output_error(999, $rsp['error'], $more);
+	}
+
+	api_output_ok($rsp['data'], $more);
 	exit();
 ?>

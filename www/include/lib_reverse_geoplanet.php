@@ -7,22 +7,17 @@
 
 	function reverse_geoplanet($lat, $lon){
 
-		# TODO: check for a config flag that indicates we want to call a
-		# remote instance of reverse-geoplanet and then do that.
-
-		$short_lat = (float)sprintf("%.3f", $lat);
-		$short_lon = (float)sprintf("%.3f", $lon);
-
+		list($short_lat, $short_lon) = _reverse_geoplanet_shorten($lat, $lon);
 		$geohash = geohash_encode($short_lat, $short_lon);
 
-		$cache_key = "reversegeocode_full_{$geohash}";
+		$cache_key = _reverse_geoplanet_cache_key($geohash);
 
 		# try to pull it out of memcache
 
 		$cache = cache_get($cache_key);
 
 		if ($cache['ok']){
-			return $cache['data'];
+			return okay($cache);
 		}
 
 		# try to pull it out of the local db
@@ -33,8 +28,12 @@
 		$rsp = db_single(db_fetch($sql));
 
 		if ($rsp){
+
 			cache_set($cache_key, $rsp, "cache locally");
-			return $rsp;
+
+			return okay(array(
+				'data' => $rsp
+			));
 		}
 
 		#
@@ -42,7 +41,7 @@
 		$loc = geo_flickr_reverse_geocode($lat, $lon);
 
 		if (! $loc){
-			return null;
+			return not_okay();
 		}
 
 		$woeid = $loc['woeid'];
@@ -50,11 +49,11 @@
 		$loc = geo_flickr_get_woeid($loc['woeid']);
 
 		if (! $loc){
-			return null;
+			return not_okay();
 		}
 
 		if (! $loc['woeid']){
-			return null;
+			return not_okay();
 		}
 
 		#
@@ -82,14 +81,16 @@
 
 		$rsp = reverse_geoplanet_add($data);
 
-		if ($rsp['ok']){
-			return $rsp['data'];
+		if (! $rsp['ok']){
+			return $rsp;
 		}
+
+		return $rsp;
 	}
 
 	########################################################################
 
-	function reverse_geoplanet_add($data){
+	function reverse_geoplanet_add($data, $cache_key=''){
 
 		$insert = array();
 
@@ -100,11 +101,28 @@
 		$rsp = db_insert('reverse_geoplanet', $insert);
 
 		if ($rsp['ok']){
-			cache_set($cache_key, $insert, 'cache locally');
+
+			$cache_key = _reverse_geoplanet_cache_key($data['geohash']);
+			cache_set($cache_key, $data, 'cache locally');
+
 			$rsp['data'] = $data;
 		}
 
 		return $rsp;
+	}
+
+	########################################################################
+
+	function _reverse_geoplanet_shorten($lat, $lon){
+		$short_lat = (float)sprintf("%.3f", $lat);
+		$short_lon = (float)sprintf("%.3f", $lon);
+		return array($short_lat, $short_lon);
+	}
+
+	########################################################################
+
+	function _reverse_geoplanet_cache_key($geohash){
+		return "reversegeocode_full_{$geohash}";
 	}
 
 	########################################################################
