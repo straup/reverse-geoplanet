@@ -37,7 +37,25 @@ service for other robots rathern than a website for humans. You can force
 results to be returned as HTML by specifying the *inline=1* argument. For example:
 
 	http://example.com/reverse-geoplanet/www/?lat=37.765219&lon=-122.419787&inline=1
-	
+
+PHP
+--
+
+You can also call the reverse geocoder directly from a Flamwork project like this:
+
+	include("include/init.php");
+	loadlib("reverse_geoplanet");
+
+	$lat = 40.721294;
+	$lon = -73.983994;
+	$remote = 'http://reverse.example.com/';
+
+	dumper(reverse_geoplanet($lat, $lon));
+	dumper(reverse_geoplanet($lat, $lon, $remote));
+
+The third argument is optional and tells the code to call another remote
+instance of reverse-geoplanet for results.
+
 Python
 --
 

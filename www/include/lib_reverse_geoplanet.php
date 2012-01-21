@@ -5,13 +5,13 @@
 
 	########################################################################
 
-	function reverse_geoplanet($lat, $lon){
+	function reverse_geoplanet($lat, $lon, $remote_endpoint=''){
 
-		# works but needs a little more sanity checking
+		# to cache or not to cache?
 
-		# if ($GLOBALS['cfg']['reverse_geoplanet_endpoint']){
-		# 	return reverse_geoplanet_remote($lat, $lon);
-		# }
+		if ($remote_endpoint){
+			return _reverse_geoplanet_remote($lat, $lon, $remote_endpoint);
+		}
 
 		list($short_lat, $short_lon) = _reverse_geoplanet_shorten($lat, $lon);
 		$geohash = geohash_encode($short_lat, $short_lon);
@@ -96,14 +96,14 @@
 
 	########################################################################
 
-	function reverse_geoplanet_remote($lat, $lon){
+	function _reverse_geoplanet_remote($lat, $lon, $remote_endpoint){
 
 		$query = http_build_query(array(
 			'lat' => $lat,
 			'lon' => $lon,
 		));
 
-		$url = "{$GLOBALS['cfg']['reverse_geoplanet_endpoint']}?{$query}";
+		$url = "{$remote_endpoint}?{$query}";
 
 		$rsp = http_get($url);
 
