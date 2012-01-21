@@ -7,6 +7,12 @@
 
 	function reverse_geoplanet($lat, $lon){
 
+		# works but needs a little more sanity checking
+
+		# if ($GLOBALS['cfg']['reverse_geoplanet_endpoint']){
+		# 	return reverse_geoplanet_remote($lat, $lon);
+		# }
+
 		list($short_lat, $short_lon) = _reverse_geoplanet_shorten($lat, $lon);
 		$geohash = geohash_encode($short_lat, $short_lon);
 
@@ -86,6 +92,30 @@
 		}
 
 		return $rsp;
+	}
+
+	########################################################################
+
+	function reverse_geoplanet_remote($lat, $lon){
+
+		$query = http_build_query(array(
+			'lat' => $lat,
+			'lon' => $lon,
+		));
+
+		$url = "{$GLOBALS['cfg']['reverse_geoplanet_endpoint']}?{$query}";
+
+		$rsp = http_get($url);
+
+		if (! $rsp['ok']){
+			return $rsp;
+		}
+
+		$data = json_decode($rsp['body'], 'as hash');
+
+		return okay(array(
+			'data' => $data,
+		));
 	}
 
 	########################################################################
