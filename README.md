@@ -56,6 +56,23 @@ You can also call the reverse geocoder directly from a Flamwork project like thi
 The third argument is optional and tells the code to call another remote
 instance of reverse-geoplanet for results.
 
+If you want to bolt the functionality in to another Flamework project itself
+you'll need to copy the following files:
+
+* [lib_api_output.php](https://github.com/straup/reverse-geoplanet/blob/master/www/include/lib_api_output.php)
+  
+* [lib_api_output_json.php](https://github.com/straup/reverse-geoplanet/blob/master/www/include/lib_api_output_json.php)
+  
+* [lib_flickr_api.php](https://github.com/straup/reverse-geoplanet/blob/master/www/include/lib_flickr_api.php)
+
+* [lib_geo_flickr.php](https://github.com/straup/reverse-geoplanet/blob/master/www/include/lib_geo_flickr.php)
+  
+* [lib_geohash.php](https://github.com/straup/reverse-geoplanet/blob/master/www/include/lib_geohash.php)
+  
+* [lib_reverse_geoplanet.php](https://github.com/straup/reverse-geoplanet/blob/master/www/include/lib_reverse_geoplanet.php)
+  
+(I should probably just write a shell script to automate this...)
+
 Python
 --
 
@@ -100,3 +117,6 @@ See also
 
 * [http://buildingequalsyes.spum.org/](http://buildingequalsyes.spum.org/)
   
+* [flamework-flickrapp](https://github.com/straup/flamework-flickrapp)
+
+* [flamework-geo](https://github.com/straup/flamework-geo)
