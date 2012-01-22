@@ -34,7 +34,7 @@ How to
 
 Do you see the part where the `name` attribute contains the country name twice? The part
 where it says "Mission Dolores, San Francisco, CA, _US,_ United States"? That's actually I bug
-that I am responsible for back, so many moons ago, when I still worked at Flickr. I'm sorry.
+that I am responsible for from back, so many moons ago, when I still worked at Flickr. I'm sorry.
 It hurts every time I see it...
 
 By default reverse-geoplanet outputs JSON and is expected to be run more as a
