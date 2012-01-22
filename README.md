@@ -120,3 +120,5 @@ See also
 * [flamework-flickrapp](https://github.com/straup/flamework-flickrapp)
 
 * [flamework-geo](https://github.com/straup/flamework-geo)
+
+* [flamework-api](https://github.com/straup/flamework-api)
