@@ -32,16 +32,16 @@ How to
 		"stat":"ok"
 	}
 
+Do you see the part where the `name` attribute contains the country name twice? The part
+where it says "Mission Dolores, San Francisco, CA, _US,_ United States"? That's actually I bug
+that I am responsible for back, so many moons ago, when I still worked at Flickr. I'm sorry.
+It hurts every time I see it...
+
 By default reverse-geoplanet outputs JSON and is expected to be run more as a
 service for other robots rather than a website for humans. You can force
 results to be returned as HTML by specifying the *inline=1* argument. For example:
 
 	http://example.com/reverse-geoplanet/www/?lat=37.765219&lon=-122.419787&inline=1
-
-And do you see the part where the `name` attribute contains the country name twice? The part
-where it says "Mission Dolores, San Francisco, CA, _US,_ United States"? That's actually I bug
-that I am responsible for back, so many moons ago, when I still worked at Flickr. I'm sorry.
-It hurts every time I see it...
 
 PHP
 --
