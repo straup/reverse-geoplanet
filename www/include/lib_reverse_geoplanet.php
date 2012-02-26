@@ -64,7 +64,14 @@
 
 		$hierarchy = array();
 
-		foreach (array('locality', 'region', 'country') as $placetype){
+		$places = array(
+			'neighbourhood',
+			'locality',
+			'region',
+			'country',
+		);
+
+		foreach ($places as $placetype){
 			$hierarchy[$placetype] = $loc[$placetype]['woeid'];
 		}
 
@@ -80,6 +87,7 @@
 			'country' => $hierarchy['country'],
 			'name' => $loc['name'],
 			'placetype' => $loc['place_type_id'],
+			'timezone' => $loc['timezone'],
 			'created' => $now,
 		);
 
