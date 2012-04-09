@@ -11,6 +11,11 @@ reverse-geoplanet was originally developed for the [building=yes](http://buildin
 
 You will need a valid [Flickr API key](http://www.flickr.com/services/apps/create/apply/) in order to use reverse-geoplanet.
 
+Installting reverse-geoplanet
+--
+
+Please consult [INSTALL.md](https://github.com/straup/reverse-geoplanet/blob/master/INSTALL.md)
+
 How to
 --
 
