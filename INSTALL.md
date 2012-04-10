@@ -3,9 +3,11 @@ Installing reverse-geoplanet
 
 reverse-geoplanet is built on top of [Flamework](https://github.com/exflickr/flamework) which means it's nothing more than a vanilla Apache + PHP + MySQL application. You can run it as a dedicated virtual host or as a subdirectory of an existing host. 
 
-It uses the Flickr API 
+It uses the Flickr API for new lookups so you'll need to make sure you have a [valid API key](http://www.flickr.com/services/apps/create/apply/).
 
 You will need to make a copy of the [config.php.example](https://github.com/straup/reverse-geoplanet/blob/master/www/include/config.php.example) file and name it `config.php`. You will need to update this new file and add the various specifics for databases and third-party APIs.
+
+You will need to setup a MySQL database and load the schema files in [https://github.com/straup/reverse-geoplanet/blob/master/schema](https://github.com/straup/reverse-geoplanet/blob/master/schema). You'll also need to add your database settings below. I generally use a tool I wrote for myself called, not surprisingly, `setup-db.sh` which is part of the [flamework-tools](https://github.com/straup/flamework-tools/blob/master/bin/setup-db.sh).
 
 The basics
 ===

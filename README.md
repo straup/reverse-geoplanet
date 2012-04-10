@@ -14,7 +14,7 @@ You will need a valid [Flickr API key](http://www.flickr.com/services/apps/creat
 Installting reverse-geoplanet
 --
 
-Please consult [INSTALL.md](https://github.com/straup/reverse-geoplanet/blob/master/INSTALL.md)
+Please consult the [INSTALL.md](https://github.com/straup/reverse-geoplanet/blob/master/INSTALL.md) document.
 
 How to
 --
