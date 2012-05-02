@@ -11,7 +11,7 @@ reverse-geoplanet was originally developed for the [building=yes](http://buildin
 
 You will need a valid [Flickr API key](http://www.flickr.com/services/apps/create/apply/) in order to use reverse-geoplanet.
 
-Installting reverse-geoplanet
+Installing reverse-geoplanet
 --
 
 Please consult the [INSTALL.md](https://github.com/straup/reverse-geoplanet/blob/master/INSTALL.md) document.
@@ -51,7 +51,7 @@ results to be returned as HTML by specifying the *inline=1* argument. For exampl
 PHP
 --
 
-You can also call the reverse geocoder directly from a Flamwork project like this:
+You can also call the reverse geocoder directly from a Flamework project like this:
 
 	include("include/init.php");
 	loadlib("reverse_geoplanet");
