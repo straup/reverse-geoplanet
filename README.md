@@ -51,7 +51,7 @@ results to be returned as HTML by specifying the *inline=1* argument. For exampl
 PHP
 --
 
-You can also call the reverse geocoder directly from a Flamwork project like this:
+You can also call the reverse geocoder directly from a Flamework project like this:
 
 	include("include/init.php");
 	loadlib("reverse_geoplanet");
